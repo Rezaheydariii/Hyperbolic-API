@@ -1,1 +1,32 @@
-# Run Nwaku with Docker Compose
+
+
+How about we build a simple text generator tool in our app using API? So we are gonna focus on makin use of @hyperbolic_labs  APIs to have Meta-Llama model generating text.
+Hyperbolic is a platform that leverages open source and AI computation resources to empower developers using advanced models at an affordable price. So, we are going to co-create a single tool that generates text, using this Hyperbolic API.
+
+1/first go:
+https://app.hyperbolic.xyz/settings
+Scroll down a bit and you will see your dedicated API
+
+2/Open the terminal on your system... I use CMD on Windows.
+After ensuring that the latest version of Python is installed.
+run command in CMD: pip install openai
+I wrote a script in Python, and with the help of an API, I can easily get a motivational quote with a simple call.
+```
+import openai
+
+client = openai.OpenAI(
+    api_key="YOUR_API",
+    base_url="https://api.hyperbolic.xyz/v1"
+)
+
+response = client.chat.completions.create(
+    model="meta-llama/Meta-Llama-3.1-70B-Instruct",
+    messages=[{"role": "user", "content": "Write a motivational sentence."}],
+    max_tokens=50
+)
+
+print(response.choices[0].message.content)
+```
+Don't forget to add your API key to the script above.
+Now, on your system, open a TXT file in an accessible location and place the Python script inside it.
+You can save it with a name of your choice or use text_generator, and make sure the file extension is .py
